@@ -24,11 +24,15 @@ const cards = [
 
   // COMPLETED:  Display our data
   // COMPLETED:  On click: flip cards back and forth
-  // Get info for new cards from the user
+  // COMPLETED:  Get info for new cards from the user
     // Create data properties for the front and back of new card
     // Bind these properties to the form inputs using v-model
-  // Add new card when user hits enter or clicks button
-  // Delete cards
+  // COMPLETED:  Add new card when user hits enter or clicks button
+    // Create a method
+      // creates aq new card object containing new card information
+      // pushes that card object in to the cards array
+  // COMPLETED:  Delete cards
+  
   // Animate card flip
   // Display an error message if form fields are blank
 
@@ -42,6 +46,15 @@ const cards = [
     methods: {
       flipCard: function(card){
         card.flipped = !card.flipped;
+      },
+      addNew: function(){
+        this.cards.push({
+          front: this.newFront,
+          back: this.newBack,
+          flipped: false
+        })
+        this.newFront = '';
+        this.newBack = '';
       }
     }
   });
