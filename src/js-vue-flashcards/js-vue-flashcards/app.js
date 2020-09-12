@@ -32,8 +32,7 @@ const cards = [
       // creates aq new card object containing new card information
       // pushes that card object in to the cards array
   // COMPLETED:  Delete cards
-  
-  // Animate card flip
+  // COMPLETED:  Animate card flip
   // Display an error message if form fields are blank
 
   new Vue({
@@ -41,20 +40,26 @@ const cards = [
     data: {
       cards: cards,
       newFront: '',
-      newBack: ''
+      newBack: '',
+      error: false
     },
     methods: {
       flipCard: function(card){
         card.flipped = !card.flipped;
       },
       addNew: function(){
-        this.cards.push({
-          front: this.newFront,
-          back: this.newBack,
-          flipped: false
-        })
-        this.newFront = '';
-        this.newBack = '';
+        if(!this.newFront || !this.newBack){
+          this.error = true;
+        } else {
+          this.cards.push({
+            front: this.newFront,
+            back: this.newBack,
+            flipped: false
+          });
+          this.newFront = '';
+          this.newBack = '';
+          this.error = false;
+        }
       }
     }
   });
